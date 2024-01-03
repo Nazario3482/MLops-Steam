@@ -25,7 +25,7 @@ MarkupSafe==
 mouse==
 MouseInfo==
 nltk==
-numpy==
+#numpy==
 openpyxl==
 orjson==
 outcome==
@@ -60,14 +60,12 @@ sniffio==
 sortedcontainers==
 soupsieve==
 starlette==
-textblob==
+#textblob==
 tqdm==
 trio==
 trio-websocket==
 typing_extensions==
 tzdata==
 urllib3==
-uvicorn==
-Werkzeug==
-wikipedia==
-wsproto==
+#uvicorn==
+
