@@ -77,7 +77,6 @@ python-dateutil==2.8.2
 pytweening==1.0.7
 pytz==2023.3.post1
 pywhatkit==5.4
-pywin32==305
 pywin32-ctypes==0.2.2
 pyzmq==25.1.2
 regex==2023.10.3
