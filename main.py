@@ -28,8 +28,8 @@ modelo= pd.read_parquet("data/modelo_render.parquet")
 
 
 @app.get("/", response_class=HTMLResponse)
-async def inicio():
-    principal = """
+async def incio ():
+    principal= """
     <!DOCTYPE html>
     <html>
         <head>
@@ -38,22 +38,15 @@ async def inicio():
                 body {
                     font-family: Arial, sans-serif;
                     padding: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
                 }
                 h1 {
                     color: #333;
-                    margin-bottom: 10px;
+                    text-align: center;
                 }
                 p {
                     color: #666;
+                    text-align: center;
                     font-size: 18px;
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                }
-                button {
                     margin-top: 20px;
                 }
             </style>
@@ -61,8 +54,7 @@ async def inicio():
         <body>
             <h1>API de consultas sobre juegos de la plataforma Steam</h1>
             <p>Bienvenido a la API de Steam creada por Nazareno Fantin, donde se pueden hacer diferentes consultas sobre la plataforma de videojuegos.</p>
-            <p>Por favor, haz clic en el botón para ir a las consultas.</p>
-            <button onclick="window.location.href='http://127.0.0.1:8000/docs#/';">Ir a las consultas</button>
+            <p>Por favor, para ir a las consultas agregar /docs al final del link.</p>
         </body>
     </html>
     """
