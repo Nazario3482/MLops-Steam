@@ -156,7 +156,7 @@ async def UsersRecommend( year : int ):
 @app.get("/usersworstdeveloper/{year}", name = "USERSWORSTDEVELOPER")
 async def UsersWorstDeveloper(year: int):
     """
-    Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado.
+    Devuelve el top 3 de juegos MENOS recomendados por usuarios para el año dado.
 
     Parametro: 
     ej Año: 2012,2013,2017,etc
