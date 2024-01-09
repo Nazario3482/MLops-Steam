@@ -28,8 +28,8 @@ modelo= pd.read_parquet("data/modelo_render.parquet")
 
 
 @app.get("/", response_class=HTMLResponse)
-async def incio ():
-    principal= """
+async def inicio():
+    principal = """
     <!DOCTYPE html>
     <html>
         <head>
@@ -38,26 +38,36 @@ async def incio ():
                 body {
                     font-family: Arial, sans-serif;
                     padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
                 }
                 h1 {
                     color: #333;
-                    text-align: center;
+                    margin-bottom: 10px;
                 }
                 p {
                     color: #666;
-                    text-align: center;
                     font-size: 18px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+                button {
                     margin-top: 20px;
                 }
             </style>
         </head>
         <body>
             <h1>API de consultas sobre juegos de la plataforma Steam</h1>
-            <p>Bienvenido a la API de Steam donde se pueden hacer diferentes consultas sobre la plataforma de videojuegos.</p>
+            <p>Bienvenido a la API de Steam creada por Nazareno Fantin, donde se pueden hacer diferentes consultas sobre la plataforma de videojuegos.</p>
+            <p>Por favor, haz clic en el botón para ir a las consultas.</p>
+            <button onclick="window.location.href='http://127.0.0.1:8000/docs#/';">Ir a las consultas</button>
         </body>
     </html>
     """
     return principal
+
 
 
 # Antes de la definición de la función
@@ -88,6 +98,15 @@ async def PlayTimeGenre(genre: str):
 #Seguna Función
 @app.get("/userforgenre/{genre}", name="USERFORGENRE")
 async def UserForGenre(genre: str):
+    """
+    Debe devolver el usuario que acumula más horas jugadas para el género dado
+
+    y una lista de la acumulación de horas jugadas por año.
+
+    Parametro: 
+    Action, Adventure, RPG, Strategy, Simulation, Casual, etc.
+
+    """
     # Filtramos por género
     data_genres = funcion2[funcion2['genres'].str.contains(genre)].copy()  # Copiamos el DataFrame para evitar la advertencia
     # Convertir minutos a horas y redondear a números enteros
@@ -111,6 +130,13 @@ async def UserForGenre(genre: str):
 #Tercera funcion
 @app.get("/usersrecommend/{year}", name = "USERSRECOMMEND")
 async def UsersRecommend( year : int ):
+    """
+    Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado.
+
+    Parametro: 
+    ej Año: 2012,2017,etc
+
+    """
     # Filtramos por año
     data_year = funcion3[funcion3['release_year'] == year]
     # Verifica que exista informacion del año solicitado
@@ -137,6 +163,13 @@ async def UsersRecommend( year : int ):
 #Cuarta función
 @app.get("/usersworstdeveloper/{year}", name = "USERSWORSTDEVELOPER")
 async def UsersWorstDeveloper(year: int):
+    """
+    Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado.
+
+    Parametro: 
+    ej Año: 2012,2013,2017,etc
+
+    """
     mascara = (funcion4['release_year'] == year)   
     df_filtered = funcion4[mascara]
     developer_counts = df_filtered['developer'].value_counts().head(3)
@@ -152,6 +185,15 @@ async def UsersWorstDeveloper(year: int):
 #Quinta función
 @app.get("/sentimentanalysis/{year}", name="SENTIMENTANALYSIS")
 async def sentiment_analysis(year: int):
+    """
+    se devuelve una lista con la cantidad total de registros de reseñas de usuarios
+
+      que se encuentren categorizados con un análisis de sentimiento como valor.
+      
+    Parametro: 
+    ej Año: 2012,2013,2017,etc
+
+    """
     # Filtramos por año
     data_year = funcion5[funcion5['release_year'] == year]
     # Agrupamos por sentimiento y contamos las reseñas
