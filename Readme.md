@@ -34,9 +34,9 @@ El sistema se estructura en dos etapas principales:
 
 ### Documentación
 
-`Deploy` 
+`Deploy` https://nazareno-fantin.onrender.com
 
-`Vídeo de presentación del proyecto` 
+`Vídeo de presentación del proyecto` https://drive.google.com/file/d/1DJlalEoQLMrTsR12qpj4L39bXDKdd1Aw/view?usp=sharing
 
 `Fuente de Datos` https://drive.google.com/drive/folders/1HqBG2-sUkz_R3h1dZU5F2uAzpRn7BSpj
 
